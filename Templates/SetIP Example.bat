@@ -1,0 +1,1 @@
+soapclient.exe --uname="uname" --apikey="apikey" --license="license" --task="setip" --ipfile="Template-AssignIP.csv"

@@ -1,0 +1,23 @@
+/src
+/setup/logs
+**/bin/
+**/obj/
+**/packages/
+.vs
+*.user
+*.suo
+*.cache
+*.force
+solutions/**/*.zip
+solutions/**/*.tar.gz
+**/packages/
+**/.vs/
+**/.idea/
+/test/Test Local/*.json
+/artifacts
+solutions/
+solutions/Release/
+**/msbuild.binlog
+npcap*.exe
+*.tar
+**/Release Build/
