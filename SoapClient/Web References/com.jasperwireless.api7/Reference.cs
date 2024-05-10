@@ -312,6 +312,7 @@ namespace SoapClient.com.jasperwireless.api7 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.jasperwireless.com/ws/service/terminal/EditTerminal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Bare)]
         [return: System.Xml.Serialization.XmlElementAttribute("EditTerminalResponse", Namespace="http://api.jasperwireless.com/ws/schema")]
+        [System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public EditTerminalResponse EditTerminal([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] EditTerminalRequest EditTerminalRequest) {
             object[] results = this.Invoke("EditTerminal", new object[] {
                         EditTerminalRequest});

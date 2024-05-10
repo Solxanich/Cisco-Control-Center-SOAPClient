@@ -15,11 +15,13 @@ namespace SoapClient
             {
                 using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
-                    var records = csv.GetRecords<SetIpArgs>();
+                    var records = csv.GetRecords<ProvisioningArgs>();
                     foreach (var item in records)
                     {
                         PeakJasperRapper.SetNewIP(service, licenseKey, iccId: item.iccid, ip: item.ip, pdpId: item.pdpid, apn: item.apn);
-                        
+                        PeakJasperRapper.EditTerminal(service, licenseKey, iccid: item.iccid, TerminalChangeType.customer, item.customer);
+                        PeakJasperRapper.EditTerminal(service, licenseKey, iccid: item.iccid, TerminalChangeType.deviceid, item.deviceid);
+
                         // Delay between calls per Cisco SPEC
                         System.Threading.Thread.Sleep(30000);
                     }

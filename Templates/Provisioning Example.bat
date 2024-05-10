@@ -1,0 +1,1 @@
+soapclient.exe --uname="uname" --apikey="apikey" --license="license" --task="provision" --ipfile="Template-Provisioning.csv"

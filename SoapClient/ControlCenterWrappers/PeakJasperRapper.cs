@@ -28,5 +28,28 @@ namespace SoapClient.ControlCenterWrappers
                 Shared.LogException(e);
             }
         }
+
+        internal static void EditTerminal(TerminalService service, string licenseKey, string iccid, TerminalChangeType attribute, string value)
+        {
+            EditTerminalRequest request = new EditTerminalRequest()
+            {
+                licenseKey = licenseKey,
+                version = "1.0",
+                messageId = iccid + attribute,
+                iccid = iccid,
+                targetValue = value,
+                changeType = (int)attribute
+            };
+
+            try
+            {
+                EditTerminalResponse response = service.EditTerminal(request);
+                Console.WriteLine($"Modified {attribute} for {iccid} is: {value}");
+            }
+            catch (System.Web.Services.Protocols.SoapException e)
+            {
+                Shared.LogException(e);
+            }
+        }
     }
 }

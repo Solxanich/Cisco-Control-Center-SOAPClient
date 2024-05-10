@@ -76,9 +76,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlCenterWrappers\AssignIP.cs" />
+    <Compile Include="ControlCenterWrappers\PeakJasperRapper.cs" />
     <Compile Include="ControlCenterWrappers\ExampleGetModifiedTerminals.cs" />
     <Compile Include="ControlCenterWrappers\Shared.cs" />
+    <Compile Include="ControlCenterWrappers\TerminalChangeType.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

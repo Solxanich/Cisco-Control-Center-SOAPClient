@@ -22,11 +22,11 @@ namespace SoapClient
             var options = parsed.Value;
 
             if (options.task == null)
-                throw new ArgumentNullException("Missing '-task' argument. Options include: 'setip'");
+                throw new ArgumentNullException("Missing '-task' argument. Options include: 'provision'");
 
             var service = Shared.GetTerminalService(options.uname, options.apikey);
 
-            if (options.task == "setip")
+            if (options.task == "provision")
             {
                 if (options.ipfile is null || !options.ipfile.Contains(".csv"))
                     throw new ArgumentNullException("Missing '-ipfile' argument. Please provide a valid CSV file");

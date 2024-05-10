@@ -27,11 +27,13 @@ namespace SoapClient
         public string ipfile { get; set; }
     }
 
-    internal class SetIpArgs
+    internal class ProvisioningArgs
     {
         public string ip { get; set; }
         public string pdpid { get; set; }
         public string apn { get; set; }
         public string iccid { get; set; }
+        public string deviceid { get; set; }
+        public string customer { get; set; }
     }
 }
