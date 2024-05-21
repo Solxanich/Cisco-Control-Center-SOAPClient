@@ -18,12 +18,14 @@ namespace SoapClient
                     var records = csv.GetRecords<ProvisioningArgs>();
                     foreach (var item in records)
                     {
+                        System.DateTime currTime = System.DateTime.Now;
+
                         PeakJasperRapper.SetNewIP(service, licenseKey, iccId: item.iccid, ip: item.ip, pdpId: item.pdpid, apn: item.apn);
                         PeakJasperRapper.EditTerminal(service, licenseKey, iccid: item.iccid, TerminalChangeType.customer, item.customer);
                         PeakJasperRapper.EditTerminal(service, licenseKey, iccid: item.iccid, TerminalChangeType.deviceid, item.deviceid);
 
                         // Delay between calls per Cisco SPEC
-                        System.Threading.Thread.Sleep(30000);
+                        while (System.DateTime.Now < currTime.AddSeconds(30)) { }
                     }
                 }
             }

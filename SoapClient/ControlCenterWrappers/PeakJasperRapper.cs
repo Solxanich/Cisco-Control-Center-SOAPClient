@@ -1,5 +1,6 @@
 ﻿using SoapClient.com.jasperwireless.api7;
 using System;
+using System.Diagnostics;
 
 namespace SoapClient.ControlCenterWrappers
 {
@@ -21,7 +22,7 @@ namespace SoapClient.ControlCenterWrappers
             try
             {
                 AssignOrUpdateIPAddressResponse response = service.AssignOrUpdateIPAddress(request);
-                Console.WriteLine($"New IP for {iccId} is: {response.correlationId}");
+                Trace.WriteLine($"New IP for {iccId} is: {response.correlationId}");
             }
             catch (System.Web.Services.Protocols.SoapException e)
             {
@@ -44,7 +45,7 @@ namespace SoapClient.ControlCenterWrappers
             try
             {
                 EditTerminalResponse response = service.EditTerminal(request);
-                Console.WriteLine($"Modified {attribute} for {iccid} is: {value}");
+                Trace.WriteLine($"Modified {attribute} for {iccid} is: {value}");
             }
             catch (System.Web.Services.Protocols.SoapException e)
             {

@@ -5,6 +5,7 @@ using CommandLine;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace SoapClient
 {
@@ -21,6 +22,10 @@ namespace SoapClient
             var parsed = Parser.Default.ParseArguments<Options>(args);
             var options = parsed.Value;
 
+            Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
+            Trace.AutoFlush = true;
+            Trace.Indent();
+
             if (options.task == null)
                 throw new ArgumentNullException("Missing '-task' argument. Options include: 'provision'");
 
@@ -33,13 +38,6 @@ namespace SoapClient
 
                 TaskRunner.SetIp(options.ipfile, service, LicenseKey);
             }
-
-            //GetModifiedTerminals.GetModifiedTerminal(service, licenseKey: "");
-            
-            
-            
-            
-            
             
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);

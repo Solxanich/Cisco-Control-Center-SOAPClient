@@ -2,6 +2,7 @@
 using SoapClient.com.jasperwireless.api7;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,11 +22,11 @@ namespace SoapClient.ControlCenterWrappers
 
         internal static void LogException(System.Web.Services.Protocols.SoapException e)
         {
-            Console.WriteLine("=== Exception in SOAP request ===");
-            Console.WriteLine("Error code: " + e.Message);
-            Console.WriteLine("Details: " + e.Detail.InnerXml);
-            Console.WriteLine();
-            Console.WriteLine("Please see the 'Error Messages' Appendix in the Jasper API documentation.");
+            Trace.WriteLine("=== Exception in SOAP request ===");
+            Trace.WriteLine("Error code: " + e.Message);
+            Trace.WriteLine("Details: " + e.Detail.InnerXml);
+            Trace.WriteLine("");
+            Trace.WriteLine("Please see the 'Error Messages' Appendix in the Jasper API documentation.");
         }
     }
 }

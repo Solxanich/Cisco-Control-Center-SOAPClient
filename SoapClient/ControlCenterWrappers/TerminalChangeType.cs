@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace SoapClient.ControlCenterWrappers
 {
 
-    // See Terminal Change type documentation
+    // See Terminal Change type under 'Simple Types' documentation
     internal enum TerminalChangeType
     {
-        deviceid = 1,
+        deviceid = 17, // The 'Location ID' Account Custom 1 which is modifiable by customer
         customer = 6,
         rateplan = 4,
         status = 3,
