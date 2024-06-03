@@ -11,8 +11,6 @@ namespace SoapClient
 {
     internal static class Program
     {
-        const string LicenseKey = "08976573-dee4-4acf-815f-fa5a6f6d69a6";
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -36,7 +34,7 @@ namespace SoapClient
                 if (options.ipfile is null || !options.ipfile.Contains(".csv"))
                     throw new ArgumentNullException("Missing '-ipfile' argument. Please provide a valid CSV file");
 
-                TaskRunner.SetIp(options.ipfile, service, LicenseKey);
+                TaskRunner.SetIp(options.ipfile, service, options.license);
             }
             
             //Application.EnableVisualStyles();

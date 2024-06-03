@@ -20,7 +20,9 @@ namespace SoapClient
                     {
                         System.DateTime currTime = System.DateTime.Now;
 
-                        PeakJasperRapper.SetNewIP(service, licenseKey, iccId: item.iccid, ip: item.ip, pdpId: item.pdpid, apn: item.apn);
+                        if (!string.IsNullOrEmpty(item.ip))
+                            PeakJasperRapper.SetNewIP(service, licenseKey, iccId: item.iccid, ip: item.ip, pdpId: item.pdpid, apn: item.apn);
+
                         PeakJasperRapper.EditTerminal(service, licenseKey, iccid: item.iccid, TerminalChangeType.customer, item.customer);
                         PeakJasperRapper.EditTerminal(service, licenseKey, iccid: item.iccid, TerminalChangeType.deviceid, item.deviceid);
 

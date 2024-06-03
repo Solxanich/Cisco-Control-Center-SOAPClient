@@ -1,2 +1,2 @@
-﻿iccid,ip,pdpid,apn,deviceid,customer
-text,text,text,text,text,text
+﻿hostname,custom_SIMNumber,ip address,pdpid,apn,custom_AdminGroup,ip state
+auto-text1,auto-text3,auto-text2,manual-text1,manual-text2,manual-text3,(intentional blank)
