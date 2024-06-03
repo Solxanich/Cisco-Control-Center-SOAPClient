@@ -32,7 +32,9 @@ namespace SoapClient
     {
         [Name("ip address")]
         public string ip { get; set; }
+        [Name("custom_CellularPdpID")]
         public string pdpid { get; set; }
+        [Name("custom_CellularAPN")]
         public string apn { get; set; }
         [Name("custom_SIMNumber")]
         public string iccid { get; set; }
