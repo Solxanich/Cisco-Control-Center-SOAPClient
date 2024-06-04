@@ -28,5 +28,10 @@ namespace SoapClient.ControlCenterWrappers
             Trace.WriteLine("");
             Trace.WriteLine("Please see the 'Error Messages' Appendix in the Jasper API documentation.");
         }
+
+        internal static string RemoveNonNumbersFromString(string input)
+        {
+            return new string(input.Where(c => char.IsDigit(c)).ToArray());
+        }
     }
 }

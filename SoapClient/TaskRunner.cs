@@ -20,11 +20,13 @@ namespace SoapClient
                     {
                         System.DateTime currTime = System.DateTime.Now;
 
-                        if (!string.IsNullOrEmpty(item.ip))
-                            PeakJasperRapper.SetNewIP(service, licenseKey, iccId: item.iccid, ip: item.ip, pdpId: item.pdpid, apn: item.apn);
+                        var sim = Shared.RemoveNonNumbersFromString(item.iccid);
 
-                        PeakJasperRapper.EditTerminal(service, licenseKey, iccid: item.iccid, TerminalChangeType.customer, item.customer);
-                        PeakJasperRapper.EditTerminal(service, licenseKey, iccid: item.iccid, TerminalChangeType.deviceid, item.deviceid);
+                        if (!string.IsNullOrEmpty(item.ip))
+                            PeakJasperRapper.SetNewIP(service, licenseKey, iccId: sim, ip: item.ip, pdpId: item.pdpid, apn: item.apn);
+
+                        PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.customer, item.customer);
+                        PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.deviceid, item.deviceid);
 
                         // Delay between calls per Cisco SPEC
                         while (System.DateTime.Now < currTime.AddSeconds(30)) { }
