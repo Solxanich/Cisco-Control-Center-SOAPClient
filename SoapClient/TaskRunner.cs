@@ -26,7 +26,8 @@ namespace SoapClient
                             PeakJasperRapper.SetNewIP(service, licenseKey, iccId: sim, ip: item.ip, pdpId: item.pdpid, apn: item.apn);
 
                         PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.customer, item.customer);
-                        PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.deviceid, item.deviceid);
+                        PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.deviceid, item.deviceid); // For Billing
+                        PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.custom1, item.deviceid); // For Customer Accounts Reference
 
                         // Delay between calls per Cisco SPEC
                         while (System.DateTime.Now < currTime.AddSeconds(30)) { }
