@@ -1,2 +1,1 @@
-﻿hostname,custom_SIMNumber,ip address,pdpid,apn,custom_AdminGroup,ip state
-auto-text1,auto-text3,auto-text2,manual-text1,manual-text2,manual-text3,(intentional blank)
+﻿ip address,ip state,description,hostname,fw_object,mac,owner,device,port,note,location,custom_InterfaceName,custom_SystemInterface,custom_OnHost,custom_OSPFMetric,custom_PortBandwidth,custom_PortEgress,custom_AdminGroup,custom_PortSpeed,custom_PhoneNumber,custom_SIMNumber,custom_CellularPdpID,custom_CellularAPN
