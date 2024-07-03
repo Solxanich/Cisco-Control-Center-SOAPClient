@@ -1,6 +1,7 @@
 ﻿using CsvHelper;
 using SoapClient.com.jasperwireless.api7;
 using SoapClient.ControlCenterWrappers;
+using System;
 using System.Globalization;
 using System.IO;
 
@@ -27,7 +28,8 @@ namespace SoapClient
 
                         PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.customer, item.customer);
                         PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.deviceid, item.deviceid); // For Billing
-                        PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.custom1, item.deviceid); // For Customer Accounts Reference
+                        PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.locationid, item.deviceid); // For Customer Accounts Reference
+                        PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.projectstatus, $"Project-{DateTime.Now.Year}"); // For Billing O&M vs Projects
 
                         // Delay between calls per Cisco SPEC
                         while (System.DateTime.Now < currTime.AddSeconds(30)) { }
