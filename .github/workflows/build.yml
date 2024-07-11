@@ -72,7 +72,7 @@ jobs:
           
           version="$oldate.$patch"
           echo "New version is '$version'"
-          echo "::set-output name=new_version::$version"
+          echo "new_version=$version" >> $GITHUB_OUTPUT
         env:
           branch: ${{github.ref}}
         
