@@ -104,13 +104,6 @@ jobs:
           dotnet --list-sdks
           echo Listing installed .NET Runtimes:
           dotnet --list-runtimes
-
-          echo Forcing exact SDK version...
-          dotnet new globaljson --sdk-version ${{env.ForcedDotnetSdkVersion}} --force
-          echo Default .NET version:
-          dotnet --version
-          echo Default .NET 'build' version:
-          dotnet build --version --nologo:
           
           echo ::group::Building Release
           dotnet clean SoapClient/SoapClient.csproj -c Release --nologo -v q
