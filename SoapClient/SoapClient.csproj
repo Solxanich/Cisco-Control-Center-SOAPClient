@@ -36,6 +36,10 @@
 	<PackageReference Include="Microsoft.Build" Version="15.1.548" ExcludeAssets="runtime" />
 	<PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.1.548" ExcludeAssets="runtime" />
   </ItemGroup>
+  <PropertyGroup>
+	<GenerateResourceMSBuildArchitecture>CurrentArchitecture</GenerateResourceMSBuildArchitecture>
+	<GenerateResourceMSBuildRuntime>CurrentRuntime</GenerateResourceMSBuildRuntime> 
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommandLine, Version=2.9.1.0, Culture=neutral, PublicKeyToken=5a870481e358d379, processorArchitecture=MSIL">
       <HintPath>..\packages\CommandLineParser.2.9.1\lib\net461\CommandLine.dll</HintPath>

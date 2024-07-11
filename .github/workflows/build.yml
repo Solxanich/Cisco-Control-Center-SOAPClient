@@ -157,7 +157,7 @@ jobs:
       #    webhook: ${{ secrets.DISCORD_WEBHOOK_BUILDBOT }}
       #    description: |
       #      Click [here](https://github.com/tModLoader/tModLoader/actions/runs/${{ github.run_id }}) to view.
-
+        
   deploy:
     needs: build
     # We push a release only on push events to the stable/preview branch that build correctly
