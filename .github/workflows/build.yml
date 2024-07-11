@@ -6,7 +6,7 @@ env:
     # Note that Is Release also has to be updated at the IF level for a Job. IE both documentation and steam push
     IsRelease: ${{ github.event_name == 'push' && (endsWith(github.ref, 'preview') || endsWith(github.ref, 'main')) }}
     IsVersioned: ${{ github.event_name == 'push' && (endsWith(github.ref, 'preview') || endsWith(github.ref, 'main') || endsWith(github.ref, '1.4.4'))  }}
-    ForcedDotnetSdkVersion: 8.0.203
+    ForcedDotnetSdkVersion: 4.8
 
 # Controls when the action will run. 
 on:
@@ -22,7 +22,7 @@ jobs:
   # This workflow contains a primary job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: windows-2019
+    runs-on: windows-latest
     # Make sure not to run this job on other labels
     if: github.event_name == 'push'
 
