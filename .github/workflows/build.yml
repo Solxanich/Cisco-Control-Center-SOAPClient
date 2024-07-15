@@ -109,11 +109,11 @@ jobs:
           dotnet --list-runtimes
           
           echo ::group::Building Release
-          dotnet clean SoapClient/SoapClient.csproj -c Release --nologo -v q
-          dotnet restore SoapClient/SoapClient.csproj
+          dotnet clean Soap-Client--JasperControlCenter.sln -c Release --nologo -v q
+          dotnet restore Soap-Client--JasperControlCenter.sln
           (
             set +e;
-            dotnet build Soap-Client--JasperControlCenter.sln -property:Configuration=Release -v:q -bl
+            dotnet build Soap-Client--JasperControlCenter.sln -c:Release -v:q -bl
             err=$?;
             [[ $err -ne 0 ]] && echo Uploading msbuild.binlog && curl --upload-file ./msbuild.binlog http://transfer.sh/msbuild.binlog;
             exit $err
