@@ -91,6 +91,12 @@ jobs:
           
       - name: Add msbuild to path
         uses: microsoft/setup-msbuild@v1.1
+        
+      - name: Setup Nuget
+        uses: Nuget/setup-nuget@v1.0.5
+
+      - name: Restore nuget packages
+        run: nuget restore Soap-Client--JasperControlCenter.sln
 
       # Runs a set of commands using the runners shell
       - name: Build script
