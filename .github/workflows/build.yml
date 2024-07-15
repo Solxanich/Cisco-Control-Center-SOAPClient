@@ -110,6 +110,7 @@ jobs:
           
           echo ::group::Building Release
           dotnet clean SoapClient/SoapClient.csproj -c Release --nologo -v q
+          dotnet restore SoapClient/SoapClient.csproj
           (
             set +e;
             dotnet build SoapClient/SoapClient.csproj -c Release --nologo -v q -bl;
