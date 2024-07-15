@@ -113,7 +113,7 @@ jobs:
           dotnet restore SoapClient/SoapClient.csproj
           (
             set +e;
-            dotnet msbuild SoapClient/SoapClient.csproj -property:Configuration=Release -v q -bl
+            dotnet msbuild SoapClient/SoapClient.csproj -property:Configuration=Release -v:q -bl
             err=$?;
             [[ $err -ne 0 ]] && echo Uploading msbuild.binlog && curl --upload-file ./msbuild.binlog http://transfer.sh/msbuild.binlog;
             exit $err
