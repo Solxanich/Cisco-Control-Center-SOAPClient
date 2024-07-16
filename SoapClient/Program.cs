@@ -1,10 +1,6 @@
-﻿using SoapClient.ControlCenterWrappers;
+﻿using CommandLine;
+using SoapClient.ControlCenterWrappers;
 using System;
-using System.Collections.Generic;
-using CommandLine;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Diagnostics;
 
 namespace SoapClient
@@ -36,7 +32,7 @@ namespace SoapClient
 
                 TaskRunner.SetIp(options.ipfile, service, options.license);
             }
-            
+
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());

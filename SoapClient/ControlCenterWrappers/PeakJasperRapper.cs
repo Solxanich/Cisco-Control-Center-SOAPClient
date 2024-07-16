@@ -1,5 +1,4 @@
 ﻿using SoapClient.com.jasperwireless.api7;
-using System;
 using System.Diagnostics;
 
 namespace SoapClient.ControlCenterWrappers

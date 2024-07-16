@@ -13,8 +13,6 @@
 // 
 #pragma warning disable 1591
 
-using com.jaspersystems.api;
-
 namespace SoapClient.com.jasperwireless.api7 {
     using System.Diagnostics;
     using System;
@@ -22,6 +20,7 @@ namespace SoapClient.com.jasperwireless.api7 {
     using System.ComponentModel;
     using System.Web.Services.Protocols;
     using System.Web.Services;
+    
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
@@ -143,9 +142,7 @@ namespace SoapClient.com.jasperwireless.api7 {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ResponseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RequestType))]
     public partial class TerminalService : System.Web.Services.Protocols.SoapHttpClientProtocol {
-
-        public SecurityHeader securityHeader;
-
+        
         private System.Threading.SendOrPostCallback EditTerminalOperationCompleted;
         
         private System.Threading.SendOrPostCallback EditTerminalRatingOperationCompleted;
@@ -312,7 +309,6 @@ namespace SoapClient.com.jasperwireless.api7 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.jasperwireless.com/ws/service/terminal/EditTerminal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Bare)]
         [return: System.Xml.Serialization.XmlElementAttribute("EditTerminalResponse", Namespace="http://api.jasperwireless.com/ws/schema")]
-        [System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public EditTerminalResponse EditTerminal([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] EditTerminalRequest EditTerminalRequest) {
             object[] results = this.Invoke("EditTerminal", new object[] {
                         EditTerminalRequest});
@@ -614,7 +610,6 @@ namespace SoapClient.com.jasperwireless.api7 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.jasperwireless.com/ws/service/terminal/GetModifiedTerminals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Bare)]
         [return: System.Xml.Serialization.XmlElementAttribute("GetModifiedTerminalsResponse", Namespace="http://api.jasperwireless.com/ws/schema")]
-        [System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public GetModifiedTerminalsResponse GetModifiedTerminals([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] GetModifiedTerminalsRequest GetModifiedTerminalsRequest) {
             object[] results = this.Invoke("GetModifiedTerminals", new object[] {
                         GetModifiedTerminalsRequest});
@@ -885,7 +880,6 @@ namespace SoapClient.com.jasperwireless.api7 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.jasperwireless.com/ws/service/terminal/AssignOrUpdateIPAddress", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Bare)]
         [return: System.Xml.Serialization.XmlElementAttribute("AssignOrUpdateIPAddressResponse", Namespace="http://api.jasperwireless.com/ws/schema")]
-        [System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public AssignOrUpdateIPAddressResponse AssignOrUpdateIPAddress([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] AssignOrUpdateIPAddressRequest AssignOrUpdateIPAddressRequest) {
             object[] results = this.Invoke("AssignOrUpdateIPAddress", new object[] {
                         AssignOrUpdateIPAddressRequest});
