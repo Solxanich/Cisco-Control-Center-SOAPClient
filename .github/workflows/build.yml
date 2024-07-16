@@ -82,15 +82,9 @@ jobs:
         with:
            custom_tag: ${{ steps.version.outputs.new_version }}
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # GitHub runners may have outdated .NET versions.
-      - name: Install .NET SDKs
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '${{env.ForcedDotnetSdkVersion}}'
           
       - name: Add msbuild to path
-        uses: microsoft/setup-msbuild@v1.1
+        uses: microsoft/setup-msbuild@v2
         
       - name: Setup Nuget
         uses: Nuget/setup-nuget@v1.0.5
