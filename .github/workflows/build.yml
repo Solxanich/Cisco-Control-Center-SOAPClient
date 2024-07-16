@@ -120,9 +120,9 @@ jobs:
           (
             set +e;
             dotnet build Soap-Client--JasperControlCenter.sln -c:Release -v:q -bl
-       #    err=$?;
-       #     [[ $err -ne 0 ]] && echo Uploading msbuild.binlog && curl --upload-file ./msbuild.binlog http://transfer.sh/msbuild.binlog;
-       #    exit $err
+            err=$?;
+            [[ $err -ne 0 ]] && echo Uploading msbuild.binlog
+            exit $err
           )
           
           mkdir -p artifacts/Release
