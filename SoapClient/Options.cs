@@ -1,4 +1,9 @@
-﻿using CommandLine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CommandLine;
 using CsvHelper.Configuration.Attributes;
 
 namespace SoapClient
@@ -7,7 +12,7 @@ namespace SoapClient
     {
         // Common Parameters
         [Option]
-        public string uname { get; set; }
+        public string uname {  get; set; }
 
         [Option]
         public string apikey { get; set; }

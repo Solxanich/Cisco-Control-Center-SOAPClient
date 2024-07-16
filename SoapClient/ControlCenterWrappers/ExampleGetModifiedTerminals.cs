@@ -1,5 +1,8 @@
-﻿using SoapClient.com.jasperwireless.api7;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using com.jaspersystems.api;
+using SoapClient.com.jasperwireless.api7;
 
 // This is a heavily modified example class from Cisco. 
 
