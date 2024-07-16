@@ -94,43 +94,14 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Build script
-        if: github.event_name == 'push'
-        shell: bash
-        run: |
-          echo CI setup Cisco SOAP Client Build
-          
-          echo ::group::Building Release
-          (
-            set +e;
-            msbuild SoapClientJasperControlCenter.sln /p:Configuration=Release -v:q -bl
-            err=$?;
-            [[ $err -ne 0 ]] && echo Uploading msbuild.binlog
-            exit $err
-          )
-          
-          mkdir -p artifacts/Release
-          cp -r SoapClient/bin/Release/. artifacts/Release
-          
-          echo ::endgroup::
-          
-          echo ::group::Creating RecentGitHubCommits.txt
-          git log -10 --format=oneline
-          git log -10 --format=oneline > artifacts/Release/RecentGitHubCommits.txt
-          echo ::endgroup::
-                    
-      #- name: Upload Debug Build Artifact
-      #  uses: actions/upload-artifact@v2
-      #  with:
-      #    name: Debug Build
-      #    path: |
-      #      ./artifacts/Debug/
+        run: msbuild SoapClientJasperControlCenter.sln /p:Configuration=Release -v:q
             
       - name: Upload Release Build Artifact
         uses: actions/upload-artifact@v2
         with:
           name: Release Build
           path: |
-            ./artifacts/Release/
+            ./SoapClient/bin/Release/.
             
       - name: List final directory and file structure
         if: always()
