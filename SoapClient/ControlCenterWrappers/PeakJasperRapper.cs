@@ -26,15 +26,12 @@ namespace SoapClient.ControlCenterWrappers
             }
             catch (System.Web.Services.Protocols.SoapException e)
             {
-                Program.log.Info(e.ToString());
                 Shared.LogException(e);
             }
         }
 
         internal static void EditTerminal(TerminalService service, string licenseKey, string iccid, TerminalChangeType attribute, string value)
         {
-            Program.log.Info("Editing Terminal for iccid " + iccid);
-
             EditTerminalRequest request = new EditTerminalRequest()
             {
                 licenseKey = licenseKey,
@@ -52,7 +49,6 @@ namespace SoapClient.ControlCenterWrappers
             }
             catch (System.Web.Services.Protocols.SoapException e)
             {
-                Program.log.Info(e.ToString());
                 Shared.LogException(e);
             }
         }
