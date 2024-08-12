@@ -4,9 +4,10 @@ env:
     DevBranch: 1.4.4
     StableBranch: main
     # Note that Is Release also has to be updated at the IF level for a Job. IE both documentation and steam push
-    IsRelease: ${{ github.event_name == 'push' && (endsWith(github.ref, 'preview') || endsWith(github.ref, 'main')) }}
+    IsRelease: false
+# ${{ github.event_name == 'push' && (endsWith(github.ref, 'preview') || endsWith(github.ref, 'main')) }}
     IsVersioned: ${{ github.event_name == 'push' && (endsWith(github.ref, 'preview') || endsWith(github.ref, 'main') || endsWith(github.ref, '1.4.4'))  }}
-    ForcedDotnetSdkVersion: 8.0.303
+    ForcedDotnetSdkVersion: 8.0.203
 
 # Controls when the action will run. 
 on:
