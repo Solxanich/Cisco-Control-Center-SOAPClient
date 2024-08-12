@@ -6,7 +6,7 @@ env:
     # Note that Is Release also has to be updated at the IF level for a Job. IE both documentation and steam push
     IsRelease: ${{ github.event_name == 'push' && (endsWith(github.ref, 'preview') || endsWith(github.ref, 'main')) }}
     IsVersioned: ${{ github.event_name == 'push' && (endsWith(github.ref, 'preview') || endsWith(github.ref, 'main') || endsWith(github.ref, '1.4.4'))  }}
-    ForcedDotnetSdkVersion: 8.0.203
+    ForcedDotnetSdkVersion: 8.0.303
 
 # Controls when the action will run. 
 on:
