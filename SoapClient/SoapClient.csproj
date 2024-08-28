@@ -38,7 +38,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -251,4 +251,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="RemoveDesignTimeFacadesBeforeSGen" BeforeTargets="GenerateSerializationAssemblies">
+    <ItemGroup>
+    <ReferencePath Remove="@(_DesignTimeFacadeAssemblies_Names->'%(OriginalIdentity)')" />
+    </ItemGroup>
+    <Message Importance="normal" Text="Removing DesignTimeFacades from ReferencePath before running SGen." />
+  </Target>
+
+  <Target Name="ReAddDesignTimeFacadesBeforeSGen" AfterTargets="GenerateSerializationAssemblies">
+    <ItemGroup>
+    <ReferencePath Include="@(_DesignTimeFacadeAssemblies_Names->'%(OriginalIdentity)')" />
+    </ItemGroup>
+    <Message Importance="normal" Text="Adding back DesignTimeFacades from ReferencePath now that SGen has run." />
+  </Target>
 </Project>
