@@ -251,16 +251,28 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <ItemGroup>
+    <ReflectionOnlyAssemblyNames Include="Microsoft.Bcl.AsyncInterfaces"/>
+    <ReflectionOnlyAssemblyNames Include="System.Buffers"/>
+    <ReflectionOnlyAssemblyNames Include="System.Numerics.Vectors"/>
+    <ReflectionOnlyAssemblyNames Include="System.Runtime.CompilerServices.Unsafe"/>
+  </ItemGroup>
   <Target Name="RemoveDesignTimeFacadesBeforeSGen" BeforeTargets="GenerateSerializationAssemblies">
     <ItemGroup>
-    <ReferencePath Remove="@(_DesignTimeFacadeAssemblies_Names->'%(OriginalIdentity)')" />
+      <_ReflectionOnlyAssembly_Names Include="@(_ReferencePath_Names)"
+                                     Condition="'@(ReflectionOnlyAssemblyNames)' == '@(_ReferencePath_Names)' And '%(Identity)' != ''"/>
+    </ItemGroup>
+    <ItemGroup>
+      <ReferencePath Remove="@(_DesignTimeFacadeAssemblies_Names->'%(OriginalIdentity)')" />
+      <ReferencePath Remove="@(_ReflectionOnlyAssembly_Names->'%(OriginalIdentity)')" />
     </ItemGroup>
     <Message Importance="normal" Text="Removing DesignTimeFacades from ReferencePath before running SGen." />
   </Target>
-
   <Target Name="ReAddDesignTimeFacadesBeforeSGen" AfterTargets="GenerateSerializationAssemblies">
     <ItemGroup>
-    <ReferencePath Include="@(_DesignTimeFacadeAssemblies_Names->'%(OriginalIdentity)')" />
+      <ReferencePath Include="@(_DesignTimeFacadeAssemblies_Names->'%(OriginalIdentity)')" />
+      <ReferencePath Include="@(_ReflectionOnlyAssembly_Names->'%(OriginalIdentity)')" />
     </ItemGroup>
     <Message Importance="normal" Text="Adding back DesignTimeFacades from ReferencePath now that SGen has run." />
   </Target>
