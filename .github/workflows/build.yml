@@ -120,7 +120,7 @@ jobs:
     needs: build
     # We push a release only on push events to the stable/preview branch that build correctly
     # Note this line doesn't have access to env variable yet since it is before the runner is established
-    if: ${{ github.event_name == 'push' && (endsWith(github.ref, 'preview') || endsWith(github.ref, 'stable')) }}
+    if: ${{ github.event_name == 'push' && (endsWith(github.ref, 'preview') || endsWith(github.ref, 'main')) }}
     name: Upload to Releases
     runs-on: ubuntu-latest
     strategy:
