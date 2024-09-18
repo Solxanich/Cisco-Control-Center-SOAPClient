@@ -97,7 +97,7 @@ jobs:
         run: msbuild SoapClientJasperControlCenter.sln /p:Configuration=Release -v:q
             
       - name: Upload Release Build Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Release Build
           path: |
@@ -132,7 +132,7 @@ jobs:
           fetch-depth: 0
           
       - name: Download build artifact from build job
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           # Change this next line to switch between uploading Release and Debug if desired. 
           name: Release Build
@@ -177,5 +177,5 @@ jobs:
           body: "Monthly Github Auto-release for ${{github.ref}}"
           tag: ${{ steps.version2.outputs.new_version }}
           prerelease: ${{ contains(github.ref, 'preview') }}
-          makeLatest: ${{ contains(github.ref, 'stable') }}
+          makeLatest: ${{ contains(github.ref, 'main') }}
           

@@ -20,26 +20,31 @@ namespace SoapClient
             var parsed = Parser.Default.ParseArguments<Options>(args);
             var options = parsed.Value;
 
-            Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
+            Trace.Listeners.Add(new TextWriterTraceListener("soapclient.log"));
             Trace.AutoFlush = true;
+            Trace.WriteLine($"Program Start - {DateTime.Now}");
             Trace.Indent();
 
-            if (options.task == null)
-                throw new ArgumentNullException("Missing '-task' argument. Options include: 'provision'");
-
-            var service = Shared.GetTerminalService(options.uname, options.apikey);
-
-            if (options.task == "provision")
+            try
             {
-                if (options.ipfile is null || !options.ipfile.Contains(".csv"))
-                    throw new ArgumentNullException("Missing '-ipfile' argument. Please provide a valid CSV file");
+                if (options.task == null)
+                    throw new ArgumentNullException("Missing '-task' argument. Options include: 'provision'");
 
-                TaskRunner.SetIp(options.ipfile, service, options.license);
+                var service = Shared.GetTerminalService(options.uname, options.apikey);
+
+                if (options.task == "provision")
+                {
+                    if (options.ipfile is null || !options.ipfile.Contains(".csv"))
+                        throw new ArgumentNullException("Missing '-ipfile' argument. Please provide a valid CSV file");
+
+                    TaskRunner.SetIp(options.ipfile, service, options.license);
+                }
             }
-            
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                Environment.Exit(1);
+            }
         }
     }
 }
