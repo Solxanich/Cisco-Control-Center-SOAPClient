@@ -10,7 +10,7 @@ namespace SoapClient
 {
     internal static class TaskRunner
     {
-        internal static void SetIp(string filePath, TerminalService service, string licenseKey)
+        internal static void ProvisionSim(string filePath, TerminalService service, string licenseKey)
         {
             using (var reader = new StreamReader(filePath))
             {
@@ -30,6 +30,7 @@ namespace SoapClient
                         PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.deviceid, item.deviceid); // For Billing
                         PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.locationid, item.deviceid); // For Customer Accounts Reference
                         PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.projectstatus, $"Project-{DateTime.Now.Year}"); // For Billing O&M vs Projects
+                        PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.onboarded, "Onboarded"); // For whether this SIM has been provisioned
 
                         // Delay between calls per Cisco SPEC
                         while (System.DateTime.Now < currTime.AddSeconds(30)) { }

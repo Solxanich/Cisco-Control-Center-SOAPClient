@@ -37,7 +37,7 @@ namespace SoapClient
                     if (options.ipfile is null || !options.ipfile.Contains(".csv"))
                         throw new ArgumentNullException("Missing '-ipfile' argument. Please provide a valid CSV file");
 
-                    TaskRunner.SetIp(options.ipfile, service, options.license);
+                    TaskRunner.ProvisionSim(options.ipfile, service, options.license);
                 }
             }
             catch (Exception e)
