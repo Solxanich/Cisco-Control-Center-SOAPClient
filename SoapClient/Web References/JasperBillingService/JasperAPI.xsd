@@ -1162,6 +1162,19 @@
       <xs:element minOccurs="0" maxOccurs="1" name="expirationDate" type="xs:date" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="SimPlanBeginInfoType">
+    <xs:annotation>
+      <xs:documentation>
+        The information about Sim's prepaid plan begin.
+    </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="iccid" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="accountName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ratePlanName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="expirationDate" type="xs:date" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="SimDataLimitInfoType">
     <xs:annotation>
       <xs:documentation>
@@ -2865,6 +2878,13 @@
     <xs:complexType>
       <xs:complexContent mixed="false">
         <xs:extension base="SimPlanCompleteInfoType" />
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SimPlanBegin">
+    <xs:complexType>
+      <xs:complexContent mixed="false">
+        <xs:extension base="SimPlanBeginInfoType" />
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
