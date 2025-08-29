@@ -11,9 +11,6 @@ namespace SoapClient
 {
     internal static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main(string[] args)
         {
@@ -28,7 +25,7 @@ namespace SoapClient
             try
             {
                 if (options.task == null)
-                    throw new ArgumentNullException("Missing '-task' argument. Options include: 'provision'");
+                    throw new ArgumentNullException("Missing '-task' argument. Options include: 'provision', 'invoice'");
 
                 var service = Shared.GetTerminalService(options.uname, options.apikey);
 
@@ -39,12 +36,51 @@ namespace SoapClient
 
                     TaskRunner.ProvisionSim(options.ipfile, service, options.license);
                 }
+                else if (options.task == "invoice")
+                {
+                    if (options.accountid == 0)
+                        throw new ArgumentNullException("Missing '-accountid' argument");
+
+                    if (string.IsNullOrEmpty(options.cyclestart) || string.IsNullOrEmpty(options.cycleend))
+                        throw new ArgumentNullException("Missing cycle dates");
+
+                    DateTime startDate = DateTime.Parse(options.cyclestart);
+                    DateTime endDate = DateTime.Parse(options.cycleend);
+
+
+                    var billingService = Shared.GetBillingService(options.uname, options.apikey);
+                    InvoiceManager.GetInvoice(billingService, options.license, options.accountid, startDate);
+                }
+                else if (options.task == "usage")
+                {
+                    if (options.accountid == 0)
+                        throw new ArgumentNullException("Missing '-accountid' argument");
+
+                    if (string.IsNullOrEmpty(options.cyclemonth))
+                        throw new ArgumentNullException("Missing '-cyclemonth' argument (format: YYYY-MM)");
+
+                    if (!DateTime.TryParse($"{options.cyclemonth}-01", out DateTime cycleStart))
+                        throw new ArgumentException("Invalid cycle month format. Use YYYY-MM (e.g., 2024-01)");
+
+                    var TerminalService = Shared.GetTerminalService(options.uname, options.apikey);
+                    var billingService = Shared.GetBillingService(options.uname, options.apikey);
+                    UsageAnalyzer.ProcessAccountUsageByCustomer(service, billingService, options.license, options.accountid, cycleStart);
+                }
+
             }
             catch (Exception e)
             {
                 Trace.WriteLine(e.Message);
                 Environment.Exit(1);
             }
+        }
+
+        private static void HandleProvisionTask(Options options, SoapClient.com.jasperwireless.api7.TerminalService service)
+        {
+            if (options.ipfile is null || !options.ipfile.Contains(".csv"))
+                throw new ArgumentNullException("Missing '-ipfile' argument. Please provide a valid CSV file");
+
+            TaskRunner.ProvisionSim(options.ipfile, service, options.license);
         }
     }
 }

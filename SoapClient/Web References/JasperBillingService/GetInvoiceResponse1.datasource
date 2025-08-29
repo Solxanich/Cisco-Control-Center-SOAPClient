@@ -5,6 +5,6 @@
     Renaming the file extension or editing the content of this file may   
     cause the file to be unrecognizable by the program.
 -->
-<GenericObjectDataSource DisplayName="GetTerminalLatestRegistrationResponse" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>SoapClient.com.jasperwireless.api7.GetTerminalLatestRegistrationResponse</TypeInfo>
+<GenericObjectDataSource DisplayName="GetInvoiceResponse" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+   <TypeInfo>SoapClient.JasperBillingService.GetInvoiceResponse, Web References.JasperBillingService.Reference.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

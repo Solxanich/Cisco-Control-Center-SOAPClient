@@ -12,7 +12,7 @@ namespace SoapClient.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.10.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -30,6 +30,16 @@ namespace SoapClient.Properties {
         public string SoapClient_com_jasperwireless_api7_TerminalService {
             get {
                 return ((string)(this["SoapClient_com_jasperwireless_api7_TerminalService"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://api7.jasperwireless.com/ws/service/billing")]
+        public string SoapClient_com_jasperwireless_api_BillingService {
+            get {
+                return ((string)(this["SoapClient_com_jasperwireless_api_BillingService"]));
             }
         }
     }

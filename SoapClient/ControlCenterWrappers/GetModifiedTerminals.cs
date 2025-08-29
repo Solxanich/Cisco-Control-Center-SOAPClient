@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
+using System.Linq;
 using com.jaspersystems.api;
 using SoapClient.com.jasperwireless.api7;
 
@@ -10,7 +12,7 @@ namespace SoapClient.ControlCenterWrappers
 {
     class GetModifiedTerminals
     {
-        internal static void GetModifiedTerminal(TerminalService service, string licenseKey)
+        internal static List<string> GetModifiedTerminal(TerminalService service, string licenseKey)
         {
             GetModifiedTerminalsRequest request = new GetModifiedTerminalsRequest()
             {
@@ -26,10 +28,12 @@ namespace SoapClient.ControlCenterWrappers
                 GetModifiedTerminalsResponse response = service.GetModifiedTerminals(request);
                 Console.WriteLine("ICCIDs size: " + response.iccids.Length);
                 Console.WriteLine("ICCIDs[0]: " + response.iccids[0]);
+                return response.iccids?.ToList() ?? new List<string>();
             }
             catch (System.Web.Services.Protocols.SoapException e)
             {
                 Shared.LogException(e);
+                return new List<string>();
             }
         }
     }

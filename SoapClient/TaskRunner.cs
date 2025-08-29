@@ -4,7 +4,7 @@ using SoapClient.ControlCenterWrappers;
 using System;
 using System.Globalization;
 using System.IO;
-
+using System.Diagnostics;
 
 namespace SoapClient
 {
@@ -32,8 +32,6 @@ namespace SoapClient
                         PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.projectstatus, $"Project-{DateTime.Now.Year}"); // For Billing O&M vs Projects
                         PeakJasperRapper.EditTerminal(service, licenseKey, iccid: sim, TerminalChangeType.onboarded, "Onboarded"); // For whether this SIM has been provisioned
 
-                        // Delay between calls per Cisco SPEC
-                        while (System.DateTime.Now < currTime.AddSeconds(30)) { }
                     }
                 }
             }

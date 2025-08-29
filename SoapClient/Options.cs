@@ -12,7 +12,7 @@ namespace SoapClient
     {
         // Common Parameters
         [Option]
-        public string uname {  get; set; }
+        public string uname { get; set; }
 
         [Option]
         public string apikey { get; set; }
@@ -26,6 +26,22 @@ namespace SoapClient
         // Parameters for Changing IPs
         [Option]
         public string ipfile { get; set; }
+
+        // Parameters for Invoice
+        [Option]
+        public long accountid { get; set; }
+
+        [Option]
+        public string cyclestart { get; set; }
+
+        [Option]
+        public string cycleend { get; set; }
+
+        [Option]
+        public string usagetask { get; set; }
+
+        [Option]
+        public string cyclemonth { get; set; }
     }
 
     internal class ProvisioningArgs
