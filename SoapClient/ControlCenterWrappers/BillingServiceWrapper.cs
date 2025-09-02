@@ -6,6 +6,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using static SoapClient.ControlCenterWrappers.DeviceInfoWrapper;
 
 namespace SoapClient.ControlCenterWrappers
 {
@@ -68,6 +69,52 @@ namespace SoapClient.ControlCenterWrappers
             sb.AppendLine("");
 
             return sb.ToString();
+        }
+
+        public struct DeviceBillableUsage
+        {
+            public DateTime cycleStartDate { get; private set; }
+            public long billableDataUsage { get; private set; }
+            public int billableSmsUsage { get; private set; }
+            public int billableVoiceUsage { get; private set; }
+            public string ratePlan { get; private set; }
+
+            public DeviceBillableUsage(GetTerminalUsageResponse response)
+            {
+                cycleStartDate = response.cycleStartDate;
+                ratePlan = response.ratePlan;
+                billableDataUsage = (long)Math.Ceiling(response.billableDataVolume / (1024 * 1024));
+                billableSmsUsage = (int)Math.Ceiling(response.billableSMSVolume);
+                billableVoiceUsage = (int)Math.Ceiling(response.billableVoiceVolume);
+            }
+
+            internal static Dictionary<string, DeviceBillableUsage> deviceBillingCache = new Dictionary<string, DeviceBillableUsage>();
+        }
+
+        internal static void UpdateBillingInfoForIccId(BillingService billingService, string licenseKey, string iccid, DateTime cycleStartDate)
+        {
+            var request = new JasperBillingService.GetTerminalUsageRequest
+            {
+                licenseKey = licenseKey,
+                version = "1.0",
+                messageId = $"Usage_{iccid}_{cycleStartDate:yyyyMMdd}",
+                iccid = iccid,
+                cycleStartDate = cycleStartDate,
+                cycleStartDateSpecified = true
+            };
+
+            try
+            {
+                DeviceBillableUsage.deviceBillingCache[iccid] = new DeviceBillableUsage(billingService.GetTerminalUsage(request));
+            }
+            catch (System.Web.Services.Protocols.SoapException e)
+            {
+                if (e.Message.Contains("200200")) // No usage found
+                {
+                    Trace.WriteLine($"No usage data found for ICCID {iccid}");
+                }
+                Shared.LogException(e);
+            }
         }
     }
 }

@@ -52,25 +52,24 @@ namespace SoapClient
 
                     DateTime startDate = DateTime.Parse(options.cyclestart);
 
-                    TaskRunner.GetInvoice(billingService, options.license, options.accountid, startDate);
+                    TaskRunner.GetInvoiceTxt(billingService, options.license, options.accountid, startDate);
                 }
 
-                /*
+                
                 else if (options.task == "usage")
                 {
                     if (options.accountid == 0)
                         throw new ArgumentNullException("Missing '-accountid' argument");
 
-                    if (string.IsNullOrEmpty(options.cyclemonth))
-                        throw new ArgumentNullException("Missing '-cyclemonth' argument (format: YYYY-MM)");
+                    if (string.IsNullOrEmpty(options.cyclestart))
+                        throw new ArgumentNullException("Missing '-cyclestart' argument (format: YYYY-MM)");
 
-                    if (!DateTime.TryParse($"{options.cyclemonth}-01", out DateTime cycleStart))
+                    if (!DateTime.TryParse($"{options.cyclestart}-01", out DateTime cycleStart))
                         throw new ArgumentException("Invalid cycle month format. Use YYYY-MM (e.g., 2024-01)");
 
-                    UsageAnalyzer.ProcessAccountUsageByCustomer(service, billingService, options.license, options.accountid, cycleStart);
+                    TaskRunner.UpdateAllCaches(deviceInfoService, billingService, options.license, options.accountid, cycleStart);
+                    UsageAnalyzer.PrintTotalUsageByCustomer();
                 }
-                */
-
             }
             catch (Exception e)
             {

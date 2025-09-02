@@ -5,7 +5,7 @@ using SoapClient.com.jasperwireless.api7;
 using SoapClient.JasperBillingService;
 using System.Diagnostics;
 
-/*
+
 namespace SoapClient.ControlCenterWrappers
 {
     public class GetTerminalUsageRequest
@@ -16,19 +16,6 @@ namespace SoapClient.ControlCenterWrappers
         public string iccid { get; set; }
         public DateTime cycleStartDate { get; set; }
         public bool cycleStartDateSpecified { get; set; }
-    }
-
-    public class GetTerminalUsageResponse
-    {
-        public string iccid { get; set; }
-        public DateTime cycleStartDate { get; set; }
-        public DateTime cycleEndDate { get; set; }
-        public long totalDataUsage { get; set; }
-        public long billableDataUsage { get; set; }
-        public int totalSmsUsage { get; set; }
-        public int billableSmsUsage { get; set; }
-        public long totalVoiceUsage { get; set; }
-        public long billableVoiceUsage { get; set; }
     }
 
     public class TerminalUsageInfo
@@ -53,104 +40,34 @@ namespace SoapClient.ControlCenterWrappers
 
     internal static class UsageAnalyzer
     {
-        internal static void ProcessAccountUsageByCustomer(TerminalService service, BillingService billingService, string licenseKey, long accountId, DateTime cycleStartDate)
+        internal static void PrintTotalUsageByCustomer()
         {
-            try
+            var terminalUsages = new List<TerminalUsageInfo>();
+
+            foreach (var iccId in TaskRunner.iccIdCache)
             {
-                Trace.WriteLine($"=== Processing Usage for Account {accountId} - Cycle: {cycleStartDate:yyyy-MM-dd} ===");
+                var billingData = BillingServiceWrapper.DeviceBillableUsage.deviceBillingCache[iccId];
+                var deviceInfo = DeviceInfoWrapper.TerminalDetails.deviceDetailsCache[iccId];
 
-                List<string> iccids = GetModifiedTerminals.GetModifiedTerminal(service, licenseKey);
-                Trace.WriteLine($"Found {iccids.Count} terminals for account {accountId}");
-
-                List<TerminalUsageInfo> terminalUsages = new List<TerminalUsageInfo>();
-
-                foreach (string iccid in iccids)
+                var terminalUsage = new TerminalUsageInfo()
                 {
-                    try
-                    {
-                        var usage = GetTerminalUsage(billingService, licenseKey, iccid, cycleStartDate);
+                    Customer = deviceInfo.Customer,
+                    Iccid = iccId,
+                    DeviceId = $"{deviceInfo.GisLocation}::{deviceInfo.Comments}",
+                    DataUsageMB = billingData.billableDataUsage,
+                    SmsUsage = billingData.billableSmsUsage,
+                    VoiceUsageSeconds = billingData.billableVoiceUsage
+                };
 
-                        var terminalDetails = GetTerminalDetails(service, licenseKey, iccid);
-
-                        if (usage != null && terminalDetails != null)
-                        {
-                            terminalUsages.Add(new TerminalUsageInfo
-                            {
-                                Iccid = iccid,
-                                Customer = terminalDetails.Customer ?? "Unknown",
-                                DeviceId = terminalDetails.DeviceId ?? "Unknown",
-                                DataUsageMB = (long)usage.billableDataVolume / (1024 * 1024),
-                                SmsUsage = (int)usage.billableSMSVolume,
-                                VoiceUsageSeconds = (long)usage.billableVoiceVolume
-                            });
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Trace.WriteLine($"Error processing ICCID {iccid}: {ex.Message}");
-                    }
-                }
-
-                var customerSummaries = GroupUsageByCustomer(terminalUsages);
-
-                LogCustomerUsageSummaries(customerSummaries, cycleStartDate);
+                terminalUsages.Add(terminalUsage);
             }
-            catch (Exception ex)
-            {
-                Trace.WriteLine($"Error in ProcessAccountUsageByCustomer: {ex.Message}");
-                throw;
-            }
+
+            var customerUsages = GetTotalUsageByCustomer(terminalUsages);
+
+            LogCustomerUsageSummaries(customerUsages, TaskRunner.currentBillingCycleCached);
         }
 
-
-        private static JasperBillingService.GetTerminalUsageResponse GetTerminalUsage(BillingService billingService, string licenseKey, string iccid, DateTime cycleStartDate)
-        {
-            var request = new JasperBillingService.GetTerminalUsageRequest
-            {
-                licenseKey = licenseKey,
-                version = "1.0",
-                messageId = $"Usage_{iccid}_{cycleStartDate:yyyyMMdd}",
-                iccid = iccid,
-                cycleStartDate = cycleStartDate,
-                cycleStartDateSpecified = true
-            };
-
-            try
-            {
-                var response = billingService.GetTerminalUsage(request);
-                return response;
-            }
-            catch (System.Web.Services.Protocols.SoapException e)
-            {
-                if (e.Message.Contains("200200")) // No usage found
-                {
-                    Trace.WriteLine($"No usage data found for ICCID {iccid}");
-                    return null;
-                }
-                Shared.LogException(e);
-                return null;
-            }
-        }
-
-        private static TerminalDetails GetTerminalDetails(TerminalService service, string licenseKey, string iccid)
-        {
-            GetTerminalDetailsRequest request = new GetTerminalDetailsRequest() //Probably need a different function since this one doesn't grab the Customer field
-            {
-                licenseKey = licenseKey,
-                version = "1.0",
-                messageId = $"Details_{iccid}",
-                iccids = iccid
-            };
-            
-            var response = service.GetTerminalDetails(request);
-            return new TerminalDetails 
-            { 
-                Customer = response.customer, 
-                DeviceId = response.deviceId 
-            };
-        }
-
-        private static List<CustomerUsageSummary> GroupUsageByCustomer(List<TerminalUsageInfo> terminalUsages)
+        private static List<CustomerUsageSummary> GetTotalUsageByCustomer(List<TerminalUsageInfo> terminalUsages)
         {
             var customerGroups = terminalUsages
                 .GroupBy(t => t.Customer)
@@ -216,11 +133,4 @@ namespace SoapClient.ControlCenterWrappers
             Trace.WriteLine("");
         }
     }
-
-    public class TerminalDetails
-    {
-        public string Customer { get; set; }
-        public string DeviceId { get; set; }
-    }
 }
-*/

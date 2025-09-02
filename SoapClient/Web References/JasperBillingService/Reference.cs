@@ -220,18 +220,21 @@ namespace SoapClient.JasperBillingService {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.jasperwireless.com/ws/service/billing/GetTerminalUsage", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Bare)]
         [return: System.Xml.Serialization.XmlElementAttribute("GetTerminalUsageResponse", Namespace="http://api.jasperwireless.com/ws/schema")]
-        public GetTerminalUsageResponse GetTerminalUsage([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] GetTerminalUsageRequest GetTerminalUsageRequest) {
+        [System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
+		public GetTerminalUsageResponse GetTerminalUsage([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] GetTerminalUsageRequest GetTerminalUsageRequest) {
             object[] results = this.Invoke("GetTerminalUsage", new object[] {
                         GetTerminalUsageRequest});
             return ((GetTerminalUsageResponse)(results[0]));
         }
         
         /// <remarks/>
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public void GetTerminalUsageAsync(GetTerminalUsageRequest GetTerminalUsageRequest) {
             this.GetTerminalUsageAsync(GetTerminalUsageRequest, null);
         }
         
         /// <remarks/>
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public void GetTerminalUsageAsync(GetTerminalUsageRequest GetTerminalUsageRequest, object userState) {
             if ((this.GetTerminalUsageOperationCompleted == null)) {
                 this.GetTerminalUsageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTerminalUsageOperationCompleted);
@@ -240,6 +243,7 @@ namespace SoapClient.JasperBillingService {
                         GetTerminalUsageRequest}, this.GetTerminalUsageOperationCompleted, userState);
         }
         
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         private void OnGetTerminalUsageOperationCompleted(object arg) {
             if ((this.GetTerminalUsageCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
@@ -284,18 +288,21 @@ namespace SoapClient.JasperBillingService {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.jasperwireless.com/ws/service/billing/GetTerminalUsageDataDetails", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Bare)]
         [return: System.Xml.Serialization.XmlElementAttribute("GetTerminalUsageDataDetailsResponse", Namespace="http://api.jasperwireless.com/ws/schema")]
-        public GetTerminalUsageDataDetailsResponse GetTerminalUsageDataDetails([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] GetTerminalUsageDataDetailsRequest GetTerminalUsageDataDetailsRequest) {
+        [System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
+		public GetTerminalUsageDataDetailsResponse GetTerminalUsageDataDetails([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] GetTerminalUsageDataDetailsRequest GetTerminalUsageDataDetailsRequest) {
             object[] results = this.Invoke("GetTerminalUsageDataDetails", new object[] {
                         GetTerminalUsageDataDetailsRequest});
             return ((GetTerminalUsageDataDetailsResponse)(results[0]));
         }
         
         /// <remarks/>
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public void GetTerminalUsageDataDetailsAsync(GetTerminalUsageDataDetailsRequest GetTerminalUsageDataDetailsRequest) {
             this.GetTerminalUsageDataDetailsAsync(GetTerminalUsageDataDetailsRequest, null);
         }
         
         /// <remarks/>
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public void GetTerminalUsageDataDetailsAsync(GetTerminalUsageDataDetailsRequest GetTerminalUsageDataDetailsRequest, object userState) {
             if ((this.GetTerminalUsageDataDetailsOperationCompleted == null)) {
                 this.GetTerminalUsageDataDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTerminalUsageDataDetailsOperationCompleted);
@@ -304,6 +311,7 @@ namespace SoapClient.JasperBillingService {
                         GetTerminalUsageDataDetailsRequest}, this.GetTerminalUsageDataDetailsOperationCompleted, userState);
         }
         
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         private void OnGetTerminalUsageDataDetailsOperationCompleted(object arg) {
             if ((this.GetTerminalUsageDataDetailsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
@@ -314,18 +322,21 @@ namespace SoapClient.JasperBillingService {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.jasperwireless.com/ws/service/billing/GetTerminalUsageSmsDetails", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Bare)]
         [return: System.Xml.Serialization.XmlElementAttribute("GetTerminalUsageSmsDetailsResponse", Namespace="http://api.jasperwireless.com/ws/schema")]
-        public GetTerminalUsageSmsDetailsResponse GetTerminalUsageSmsDetails([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] GetTerminalUsageSmsDetailsRequest GetTerminalUsageSmsDetailsRequest) {
+        [System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
+		public GetTerminalUsageSmsDetailsResponse GetTerminalUsageSmsDetails([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] GetTerminalUsageSmsDetailsRequest GetTerminalUsageSmsDetailsRequest) {
             object[] results = this.Invoke("GetTerminalUsageSmsDetails", new object[] {
                         GetTerminalUsageSmsDetailsRequest});
             return ((GetTerminalUsageSmsDetailsResponse)(results[0]));
         }
         
         /// <remarks/>
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public void GetTerminalUsageSmsDetailsAsync(GetTerminalUsageSmsDetailsRequest GetTerminalUsageSmsDetailsRequest) {
             this.GetTerminalUsageSmsDetailsAsync(GetTerminalUsageSmsDetailsRequest, null);
         }
         
         /// <remarks/>
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public void GetTerminalUsageSmsDetailsAsync(GetTerminalUsageSmsDetailsRequest GetTerminalUsageSmsDetailsRequest, object userState) {
             if ((this.GetTerminalUsageSmsDetailsOperationCompleted == null)) {
                 this.GetTerminalUsageSmsDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTerminalUsageSmsDetailsOperationCompleted);
@@ -334,6 +345,7 @@ namespace SoapClient.JasperBillingService {
                         GetTerminalUsageSmsDetailsRequest}, this.GetTerminalUsageSmsDetailsOperationCompleted, userState);
         }
         
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         private void OnGetTerminalUsageSmsDetailsOperationCompleted(object arg) {
             if ((this.GetTerminalUsageSmsDetailsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
@@ -344,19 +356,22 @@ namespace SoapClient.JasperBillingService {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.jasperwireless.com/ws/service/billing/GetTerminalUsageVoiceDetails", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Bare)]
         [return: System.Xml.Serialization.XmlElementAttribute("GetTerminalUsageVoiceDetailsResponse", Namespace="http://api.jasperwireless.com/ws/schema")]
-        public GetTerminalUsageVoiceDetailsResponse GetTerminalUsageVoiceDetails([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] GetTerminalUsageVoiceDetailsRequest GetTerminalUsageVoiceDetailsRequest) {
+        [System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
+		public GetTerminalUsageVoiceDetailsResponse GetTerminalUsageVoiceDetails([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] GetTerminalUsageVoiceDetailsRequest GetTerminalUsageVoiceDetailsRequest) {
             object[] results = this.Invoke("GetTerminalUsageVoiceDetails", new object[] {
                         GetTerminalUsageVoiceDetailsRequest});
             return ((GetTerminalUsageVoiceDetailsResponse)(results[0]));
         }
         
         /// <remarks/>
-        public void GetTerminalUsageVoiceDetailsAsync(GetTerminalUsageVoiceDetailsRequest GetTerminalUsageVoiceDetailsRequest) {
+        [System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
+		public void GetTerminalUsageVoiceDetailsAsync(GetTerminalUsageVoiceDetailsRequest GetTerminalUsageVoiceDetailsRequest) {
             this.GetTerminalUsageVoiceDetailsAsync(GetTerminalUsageVoiceDetailsRequest, null);
         }
         
         /// <remarks/>
-        public void GetTerminalUsageVoiceDetailsAsync(GetTerminalUsageVoiceDetailsRequest GetTerminalUsageVoiceDetailsRequest, object userState) {
+        [System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
+		public void GetTerminalUsageVoiceDetailsAsync(GetTerminalUsageVoiceDetailsRequest GetTerminalUsageVoiceDetailsRequest, object userState) {
             if ((this.GetTerminalUsageVoiceDetailsOperationCompleted == null)) {
                 this.GetTerminalUsageVoiceDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTerminalUsageVoiceDetailsOperationCompleted);
             }
@@ -364,7 +379,8 @@ namespace SoapClient.JasperBillingService {
                         GetTerminalUsageVoiceDetailsRequest}, this.GetTerminalUsageVoiceDetailsOperationCompleted, userState);
         }
         
-        private void OnGetTerminalUsageVoiceDetailsOperationCompleted(object arg) {
+        [System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
+		private void OnGetTerminalUsageVoiceDetailsOperationCompleted(object arg) {
             if ((this.GetTerminalUsageVoiceDetailsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetTerminalUsageVoiceDetailsCompleted(this, new GetTerminalUsageVoiceDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));

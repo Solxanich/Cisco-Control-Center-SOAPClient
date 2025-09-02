@@ -33,12 +33,6 @@ namespace SoapClient
 
         [Option]
         public string cyclestart { get; set; }
-
-        [Option]
-        public string usagetask { get; set; }
-
-        [Option]
-        public string cyclemonth { get; set; }
     }
 
     internal class ProvisioningArgs
