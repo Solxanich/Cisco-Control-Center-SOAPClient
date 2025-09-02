@@ -35,9 +35,6 @@ namespace SoapClient
         public string cyclestart { get; set; }
 
         [Option]
-        public string cycleend { get; set; }
-
-        [Option]
         public string usagetask { get; set; }
 
         [Option]

@@ -250,6 +250,7 @@ namespace SoapClient.JasperBillingService {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.jasperwireless.com/ws/service/billing/GetInvoice", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Bare)]
         [return: System.Xml.Serialization.XmlElementAttribute("GetInvoiceResponse", Namespace="http://api.jasperwireless.com/ws/schema")]
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public GetInvoiceResponse GetInvoice([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] GetInvoiceRequest GetInvoiceRequest) {
             object[] results = this.Invoke("GetInvoice", new object[] {
                         GetInvoiceRequest});
@@ -257,11 +258,13 @@ namespace SoapClient.JasperBillingService {
         }
         
         /// <remarks/>
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public void GetInvoiceAsync(GetInvoiceRequest GetInvoiceRequest) {
             this.GetInvoiceAsync(GetInvoiceRequest, null);
         }
         
         /// <remarks/>
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public void GetInvoiceAsync(GetInvoiceRequest GetInvoiceRequest, object userState) {
             if ((this.GetInvoiceOperationCompleted == null)) {
                 this.GetInvoiceOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetInvoiceOperationCompleted);
@@ -270,6 +273,7 @@ namespace SoapClient.JasperBillingService {
                         GetInvoiceRequest}, this.GetInvoiceOperationCompleted, userState);
         }
         
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         private void OnGetInvoiceOperationCompleted(object arg) {
             if ((this.GetInvoiceCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));

@@ -1,10 +1,12 @@
 ﻿using SoapClient.com.jasperwireless.api7;
+using SoapClient.JasperBillingService;
 using System;
 using System.Diagnostics;
+using System.ServiceModel;
 
 namespace SoapClient.ControlCenterWrappers
 {
-    internal static class PeakJasperRapper
+    internal static class DeviceInfoWrapper
     {
         internal static void SetNewIP(TerminalService service, string licenseKey, string iccId, string ip, string pdpId, string apn)
         {

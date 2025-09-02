@@ -105,9 +105,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlCenterWrappers\BillingServiceWrapper.cs" />
     <Compile Include="ControlCenterWrappers\UsageAnalyzer.cs" />
-    <Compile Include="ControlCenterWrappers\GetInvoice.cs" />
-    <Compile Include="ControlCenterWrappers\PeakJasperRapper.cs" />
+    <Compile Include="ControlCenterWrappers\DeviceInfoWrapper.cs" />
     <Compile Include="ControlCenterWrappers\GetModifiedTerminals.cs" />
     <Compile Include="ControlCenterWrappers\Shared.cs" />
     <Compile Include="ControlCenterWrappers\TerminalChangeType.cs" />

@@ -5,6 +5,7 @@ using SoapClient.com.jasperwireless.api7;
 using SoapClient.JasperBillingService;
 using System.Diagnostics;
 
+/*
 namespace SoapClient.ControlCenterWrappers
 {
     public class GetTerminalUsageRequest
@@ -222,3 +223,4 @@ namespace SoapClient.ControlCenterWrappers
         public string DeviceId { get; set; }
     }
 }
+*/
