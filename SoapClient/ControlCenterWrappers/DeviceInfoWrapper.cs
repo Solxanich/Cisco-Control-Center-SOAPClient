@@ -100,21 +100,36 @@ namespace SoapClient.ControlCenterWrappers
 
         internal static List<string> GetActiveIccIdList(TerminalService service, string licenseKey)
         {
+            List<string> iccIds = new List<string>();
+
+            var totalPages = GetActiveIccIdListPage(service, licenseKey, ref iccIds, 0);
+
+            // one Page = ~50 items
+            for (int i = 1; i < totalPages; i++)
+            {
+                GetActiveIccIdListPage(service, licenseKey, ref iccIds, i);
+            }
+
+            return iccIds;
+        }
+
+        private static int GetActiveIccIdListPage(TerminalService service, string licenseKey, ref List<string> iccIds, int pageNumber)
+        {
             GetModifiedTerminalsRequest request = new GetModifiedTerminalsRequest()
             {
                 licenseKey = licenseKey,
                 version = "1.0",
                 messageId = "message-Sept2010",
-                since = new DateTime(2010, 9, 10),
-                sinceSpecified = true
+                pageNumberSpecified = true,
+                pageNumber = pageNumber
             };
 
             try
             {
                 GetModifiedTerminalsResponse response = service.GetModifiedTerminals(request);
 
-                Trace.WriteLine("ICCIDs size: " + response.iccids.Length);
-                return response.iccids?.ToList() ?? new List<string>();
+                iccIds.AddRange(response.iccids);
+                return response.totalPages;
             }
             catch (System.Web.Services.Protocols.SoapException e)
             {

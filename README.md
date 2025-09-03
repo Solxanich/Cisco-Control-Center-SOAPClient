@@ -39,7 +39,7 @@ Retrieve Billing Information By Device
 
 ```
 
-soapclient.exe --task="invoice" --uname="{your username}" --apikey="{your api key}" --license="{your license key}" 
+soapclient.exe --task="invoice" --uname="{your username}" --apikey="{your api key}" --license="{your license key}" --accountid="{your account id}" --cyclestart="YYYY-Mmm-DD"
 
 ```
 

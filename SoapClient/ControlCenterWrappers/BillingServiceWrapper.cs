@@ -113,7 +113,8 @@ namespace SoapClient.ControlCenterWrappers
                 {
                     Trace.WriteLine($"No usage data found for ICCID {iccid}");
                 }
-                Shared.LogException(e);
+                else
+                    Shared.LogException(e);
             }
         }
     }

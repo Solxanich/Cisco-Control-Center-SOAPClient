@@ -70,7 +70,9 @@ namespace SoapClient
         private static void UpdateAllBillingCaches(BillingService billingService, string licenseKey, DateTime cycleStartDate)
         {
             foreach (var item in iccIdCache)
+            {
                 BillingServiceWrapper.UpdateBillingInfoForIccId(billingService, licenseKey, item, cycleStartDate);
+            }   
         }
 
         private static void UpdateAllDeviceInfoCaches(TerminalService deviceInfoService, string licenseKey)
