@@ -373,18 +373,21 @@ namespace SoapClient.com.jasperwireless.api7 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.jasperwireless.com/ws/service/terminal/GetTerminalDetails", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Bare)]
         [return: System.Xml.Serialization.XmlElementAttribute("GetTerminalDetailsResponse", Namespace="http://api.jasperwireless.com/ws/schema")]
-        public GetTerminalDetailsResponse GetTerminalDetails([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] GetTerminalDetailsRequest GetTerminalDetailsRequest) {
+        [System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
+		public GetTerminalDetailsResponse GetTerminalDetails([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] GetTerminalDetailsRequest GetTerminalDetailsRequest) {
             object[] results = this.Invoke("GetTerminalDetails", new object[] {
                         GetTerminalDetailsRequest});
             return ((GetTerminalDetailsResponse)(results[0]));
         }
         
         /// <remarks/>
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public void GetTerminalDetailsAsync(GetTerminalDetailsRequest GetTerminalDetailsRequest) {
             this.GetTerminalDetailsAsync(GetTerminalDetailsRequest, null);
         }
         
         /// <remarks/>
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public void GetTerminalDetailsAsync(GetTerminalDetailsRequest GetTerminalDetailsRequest, object userState) {
             if ((this.GetTerminalDetailsOperationCompleted == null)) {
                 this.GetTerminalDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTerminalDetailsOperationCompleted);
@@ -393,6 +396,7 @@ namespace SoapClient.com.jasperwireless.api7 {
                         GetTerminalDetailsRequest}, this.GetTerminalDetailsOperationCompleted, userState);
         }
         
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         private void OnGetTerminalDetailsOperationCompleted(object arg) {
             if ((this.GetTerminalDetailsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
@@ -614,7 +618,7 @@ namespace SoapClient.com.jasperwireless.api7 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://api.jasperwireless.com/ws/service/terminal/GetModifiedTerminals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Bare)]
         [return: System.Xml.Serialization.XmlElementAttribute("GetModifiedTerminalsResponse", Namespace="http://api.jasperwireless.com/ws/schema")]
-        [System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public GetModifiedTerminalsResponse GetModifiedTerminals([System.Xml.Serialization.XmlElementAttribute(Namespace="http://api.jasperwireless.com/ws/schema")] GetModifiedTerminalsRequest GetModifiedTerminalsRequest) {
             object[] results = this.Invoke("GetModifiedTerminals", new object[] {
                         GetModifiedTerminalsRequest});
@@ -622,11 +626,13 @@ namespace SoapClient.com.jasperwireless.api7 {
         }
         
         /// <remarks/>
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public void GetModifiedTerminalsAsync(GetModifiedTerminalsRequest GetModifiedTerminalsRequest) {
             this.GetModifiedTerminalsAsync(GetModifiedTerminalsRequest, null);
         }
         
         /// <remarks/>
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         public void GetModifiedTerminalsAsync(GetModifiedTerminalsRequest GetModifiedTerminalsRequest, object userState) {
             if ((this.GetModifiedTerminalsOperationCompleted == null)) {
                 this.GetModifiedTerminalsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetModifiedTerminalsOperationCompleted);
@@ -635,6 +641,7 @@ namespace SoapClient.com.jasperwireless.api7 {
                         GetModifiedTerminalsRequest}, this.GetModifiedTerminalsOperationCompleted, userState);
         }
         
+		[System.Web.Services.Protocols.SoapHeaderAttribute("securityHeader")]
         private void OnGetModifiedTerminalsOperationCompleted(object arg) {
             if ((this.GetModifiedTerminalsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
