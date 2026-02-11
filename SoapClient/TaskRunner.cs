@@ -37,7 +37,7 @@ namespace SoapClient
                         DeviceInfoWrapper.EditTerminal(deviceInfoService, licenseKey, iccid: sim, TerminalChangeType.deviceid, item.deviceid); // For Billing
                         DeviceInfoWrapper.EditTerminal(deviceInfoService, licenseKey, iccid: sim, TerminalChangeType.locationid, item.deviceid); // For Customer Accounts Reference
                         DeviceInfoWrapper.EditTerminal(deviceInfoService, licenseKey, iccid: sim, TerminalChangeType.projectstatus, $"Project-{DateTime.Now.Year}"); // For Billing O&M vs Projects
-                        DeviceInfoWrapper.EditTerminal(deviceInfoService, licenseKey, iccid: sim, TerminalChangeType.onboarded, "Onboarded"); // For whether this SIM has been provisioned
+                        //DeviceInfoWrapper.EditTerminal(deviceInfoService, licenseKey, iccid: sim, TerminalChangeType.onboarded, "Onboarded"); // For whether this SIM has been provisioned
 
                         // Delay between calls per Cisco SPEC
                         while (System.DateTime.Now < currTime.AddSeconds(30)) { }

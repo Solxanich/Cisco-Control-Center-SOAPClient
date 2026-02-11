@@ -63,7 +63,6 @@ namespace SoapClient.ControlCenterWrappers
             public string GisLocation { get; set; }
             public string Comments { get; set; }
             public string ProjectStatus { get; set; }
-            public string Onboarded { get; set; }
 
             internal static Dictionary<string, TerminalDetails> deviceDetailsCache = new Dictionary<string, TerminalDetails>();
         }
@@ -91,7 +90,6 @@ namespace SoapClient.ControlCenterWrappers
                     GisLocation = terminal.custom1,
                     Comments = terminal.custom2,
                     ProjectStatus = terminal.custom3,
-                    Onboarded = terminal.custom4
                 };
 
                 TerminalDetails.deviceDetailsCache[terminal.iccid] = details;
